@@ -42,84 +42,204 @@ receiving_stn[6:20] <- as.data.frame(scale(receiving_stn[6:20]))
 
 
 #Number of Players at Each Position
-ggplot(receiving, aes(x = Position, fill = Position)) +
+ggplot(receiving, aes(x = Position)) +
   geom_bar() +
-  labs(x = "Number of Players at Each Position (2014-2023)")
+  labs(x = "Total Number of Players at Each Position (2014-2023)")
 
 #Number of Targets
-ggplot(receiving, aes(x = Targets, fill=Position)) +
+ggplot(receiving, aes(x = Targets)) +
   geom_histogram(position="dodge")
 
-ggplot(receiving, aes(y = Targets)) + 
+ggplot(receiving, aes(x = Targets)) + 
   geom_boxplot(fill="slateblue", alpha=0.2)
 
 #Number of Receptions
-ggplot(receiving, aes(x = Receptions, fill=Position)) +
+ggplot(receiving, aes(x = Receptions)) +
   geom_histogram(position="dodge") +
   xlab("")
 
-ggplot(receiving, aes(y = Receptions)) + 
+ggplot(receiving, aes(x = Receptions)) + 
   geom_boxplot(fill="slateblue", alpha=0.2)
 
 #Number of Yards
-ggplot(receiving, aes(x = Yds, fill=Position)) +
+ggplot(receiving, aes(x = Yds)) +
   geom_histogram(position="dodge")
 
-ggplot(receiving, aes(y = Yds)) + 
+ggplot(receiving, aes(x = Yds)) + 
   geom_boxplot(fill="slateblue", alpha=0.2)
 
 #Yards Per Reception
-ggplot(receiving, aes(x = YardsPerReception, fill=Position)) +
+ggplot(receiving, aes(x = YardsPerReception)) +
   geom_histogram(position="dodge")
 
-ggplot(receiving, aes(y = YardsPerReception)) + 
+ggplot(receiving, aes(x = YardsPerReception)) + 
   geom_boxplot(fill="slateblue", alpha=0.2)
 
 #Yards Per Target
-ggplot(receiving, aes(x = YardsPerTarget, fill=Position)) +
+ggplot(receiving, aes(x = YardsPerTarget)) +
   geom_histogram(position="dodge")
 
-ggplot(receiving, aes(y = YardsPerTarget)) + 
+ggplot(receiving, aes(x = YardsPerTarget)) + 
   geom_boxplot(fill="slateblue", alpha=0.2)
 
 #Receptions Per Game
-ggplot(receiving, aes(x = ReceptionsPerGame, fill=Position)) +
+ggplot(receiving, aes(x = ReceptionsPerGame)) +
   geom_histogram(position="dodge")
 
-ggplot(receiving, aes(y = ReceptionsPerGame)) + 
+ggplot(receiving, aes(x = ReceptionsPerGame)) + 
   geom_boxplot(fill="slateblue", alpha=0.2)
 
 #Bivariate Exploration (RAW Data)
 
 #Targets vs. Yards
-ggplot(receiving, aes(x=Targets, y=Yds, color=Position)) +
+ggplot(receiving, aes(x=Targets, y=Yds)) +
   geom_point()
 
 cov(receiving$Targets, receiving$Yds)
 cor(receiving$Targets, receiving$Yds)
 
 #Targets vs. Receptions
-ggplot(receiving, aes(x=Targets, y=Receptions, color=Position)) +
+ggplot(receiving, aes(x=Targets, y=Receptions)) +
   geom_point()
 
 cov(receiving$Targets, receiving$Receptions)
 cor(receiving$Targets, receiving$Receptions)
 
 #Receptions vs. Yards
-ggplot(receiving, aes(x=Receptions, y=Yds, color=Position)) +
+ggplot(receiving, aes(x=Receptions, y=Yds)) +
   geom_point()
 
 cov(receiving$Receptions, receiving$Yds)
 cor(receiving$Receptions, receiving$Yds)
 
-#Number Players for Each Position vs. Year
+#Receptions vs. Touchdowns
+ggplot(receiving, aes(x=Receptions, y=TD)) +
+  geom_point()
+
+cov(receiving$Receptions, receiving$TD)
+cor(receiving$Receptions, receiving$TD)
+
+#Number of Players for Each Position for Each Year
 ggplot(receiving, aes(x = Position, fill = Year)) +
   geom_bar(position="dodge2")
-  
+
+#Multivariate Exploration (RAW Data)
+
+#Targets per Position vs. Yards
+ggplot(receiving, aes(x=Targets, y=Yds, color=Position)) +
+  geom_point()
+
+#Targets per Position vs. Receptions
+ggplot(receiving, aes(x=Targets, y=Receptions, color=Position)) +
+  geom_point()
+
+#Receptions per Position vs. Yards
+ggplot(receiving, aes(x=Receptions, y=Yds, color=Position)) +
+  geom_point()
+
+#Receptions per Position vs. Touchdowns
+ggplot(receiving, aes(x=Receptions, y=TD, color=Position)) +
+  geom_point()
+
+#Univariate Exploration (Standardized Data):
 
 
-# by_position <- receiving
+#Number of Players at Each Position
+ggplot(receiving_stn, aes(x = Position)) +
+  geom_bar() +
+  labs(x = "Total Number of Players at Each Position (2014-2023)")
 
-# by_position <- by_position %>%
-#   group_by(Position) %>%
-#   summarise(avgypr=mean(YardsPerReception))
+#Number of Targets
+ggplot(receiving_stn, aes(x = Targets)) +
+  geom_histogram(position="dodge")
+
+ggplot(receiving_stn, aes(x = Targets)) + 
+  geom_boxplot(fill="slateblue", alpha=0.2)
+
+#Number of Receptions
+ggplot(receiving_stn, aes(x = Receptions)) +
+  geom_histogram(position="dodge") +
+  xlab("")
+
+ggplot(receiving_stn, aes(x = Receptions)) + 
+  geom_boxplot(fill="slateblue", alpha=0.2)
+
+#Number of Yards
+ggplot(receiving_stn, aes(x = Yds)) +
+  geom_histogram(position="dodge")
+
+ggplot(receiving_stn, aes(x = Yds)) + 
+  geom_boxplot(fill="slateblue", alpha=0.2)
+
+#Yards Per Reception
+ggplot(receiving_stn, aes(x = YardsPerReception)) +
+  geom_histogram(position="dodge")
+
+ggplot(receiving_stn, aes(x = YardsPerReception)) + 
+  geom_boxplot(fill="slateblue", alpha=0.2)
+
+#Yards Per Target
+ggplot(receiving_stn, aes(x = YardsPerTarget)) +
+  geom_histogram(position="dodge")
+
+ggplot(receiving_stn, aes(x = YardsPerTarget)) + 
+  geom_boxplot(fill="slateblue", alpha=0.2)
+
+#Receptions Per Game
+ggplot(receiving_stn, aes(x = ReceptionsPerGame)) +
+  geom_histogram(position="dodge")
+
+ggplot(receiving_stn, aes(x = ReceptionsPerGame)) + 
+  geom_boxplot(fill="slateblue", alpha=0.2)
+
+#Bivariate Exploration (Standardized Data)
+
+#Targets vs. Yards
+ggplot(receiving_stn, aes(x=Targets, y=Yds)) +
+  geom_point()
+
+cov(receiving_stn$Targets, receiving_stn$Yds)
+cor(receiving_stn$Targets, receiving_stn$Yds)
+
+#Targets vs. Receptions
+ggplot(receiving_stn, aes(x=Targets, y=Receptions)) +
+  geom_point()
+
+cov(receiving_stn$Targets, receiving_stn$Receptions)
+cor(receiving_stn$Targets, receiving_stn$Receptions)
+
+#Receptions vs. Yards
+ggplot(receiving_stn, aes(x=Receptions, y=Yds)) +
+  geom_point()
+
+cov(receiving_stn$Receptions, receiving_stn$Yds)
+cor(receiving_stn$Receptions, receiving_stn$Yds)
+
+#Receptions vs. Touchdowns
+ggplot(receiving_stn, aes(x=Receptions, y=TD)) +
+  geom_point()
+
+cov(receiving_stn$Receptions, receiving_stn$TD)
+cor(receiving_stn$Receptions, receiving_stn$TD)
+
+#Number of Players for Each Position for Each Year
+ggplot(receiving_st, aes(x = Position, fill = Year)) +
+  geom_bar(position="dodge2")
+
+#Multivariate Exploration (Standardized Data)
+
+#Targets per Position vs. Yards
+ggplot(receiving_stn, aes(x=Targets, y=Yds, color=Position)) +
+  geom_point()
+
+#Targets per Position vs. Receptions
+ggplot(receiving_stn, aes(x=Targets, y=Receptions, color=Position)) +
+  geom_point()
+
+#Receptions per Position vs. Yards
+ggplot(receiving_stn, aes(x=Receptions, y=Yds, color=Position)) +
+  geom_point()
+
+#Receptions per Position vs. Touchdowns
+ggplot(receiving_stn, aes(x=Receptions, y=TD, color=Position)) +
+  geom_point()
