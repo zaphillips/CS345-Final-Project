@@ -223,7 +223,7 @@ cov(receiving_stn$Receptions, receiving_stn$TD)
 cor(receiving_stn$Receptions, receiving_stn$TD)
 
 #Number of Players for Each Position for Each Year
-ggplot(receiving_st, aes(x = Position, fill = Year)) +
+ggplot(receiving_stn, aes(x = Position, fill = Year)) +
   geom_bar(position="dodge2")
 
 #Multivariate Exploration (Standardized Data)
