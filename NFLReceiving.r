@@ -6,7 +6,6 @@ library("ggplot2")
 receiving <- read_csv("NFLReceivingALL.csv")
 summary(receiving)
 
-
 #Filter for 20 <= targets
 receiving <- receiving %>%
   filter(Tgt >= 20)
@@ -116,7 +115,6 @@ ggplot(receiving, aes(x=Targets, y=Receptions)) +
   geom_point() +
   labs(x="Targets", y="Yards")
   
-
 cov(receiving$Targets, receiving$Receptions)
 cor(receiving$Targets, receiving$Receptions)
 
