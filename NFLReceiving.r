@@ -113,7 +113,7 @@ cor(receiving$Targets, receiving$Yds)
 #Targets vs. Receptions
 ggplot(receiving, aes(x=Targets, y=Receptions)) +
   geom_point() +
-  labs(x="Targets", y="Yards")
+  labs(x="Targets", y="Receptions")
   
 cov(receiving$Targets, receiving$Receptions)
 cor(receiving$Targets, receiving$Receptions)
