@@ -1,6 +1,8 @@
 library("tidyverse")
 library("ggplot2")
 
+#----------------------------Prepare Data------------------------------------
+
 receiving <- read_csv("NFLReceivingALL.csv")
 summary(receiving)
 
@@ -38,8 +40,7 @@ receiving_stn <- receiving
 receiving_stn[6:20] <- as.data.frame(scale(receiving_stn[6:20]))
 
 #Create visualizations
-#Univariate Exploration (RAW Data):
-
+#-------------------------Univariate Exploration (RAW Data)------------------------------------
 
 #Number of Players at Each Position
 ggplot(receiving, aes(x = Position)) +
@@ -89,7 +90,7 @@ ggplot(receiving, aes(x = ReceptionsPerGame)) +
 ggplot(receiving, aes(x = ReceptionsPerGame)) + 
   geom_boxplot(fill="slateblue", alpha=0.2)
 
-#Bivariate Exploration (RAW Data)
+#----------------------------Bivariate Exploration (RAW Data)------------------------------------
 
 #Targets vs. Yards
 ggplot(receiving, aes(x=Targets, y=Yds)) +
@@ -123,7 +124,7 @@ cor(receiving$Receptions, receiving$TD)
 ggplot(receiving, aes(x = Position, fill = Year)) +
   geom_bar(position="dodge2")
 
-#Multivariate Exploration (RAW Data)
+#----------------------------Multivariate Exploration (RAW Data)------------------------------------
 
 #Targets per Position vs. Yards
 ggplot(receiving, aes(x=Targets, y=Yds, color=Position)) +
@@ -141,8 +142,7 @@ ggplot(receiving, aes(x=Receptions, y=Yds, color=Position)) +
 ggplot(receiving, aes(x=Receptions, y=TD, color=Position)) +
   geom_point()
 
-#Univariate Exploration (Standardized Data):
-
+#----------------------------Univariate Exploration (Standardized Data)-----------------------------
 
 #Number of Players at Each Position
 ggplot(receiving_stn, aes(x = Position)) +
@@ -192,7 +192,7 @@ ggplot(receiving_stn, aes(x = ReceptionsPerGame)) +
 ggplot(receiving_stn, aes(x = ReceptionsPerGame)) + 
   geom_boxplot(fill="slateblue", alpha=0.2)
 
-#Bivariate Exploration (Standardized Data)
+#----------------------------Bivariate Exploration (Standardized Data)------------------------------
 
 #Targets vs. Yards
 ggplot(receiving_stn, aes(x=Targets, y=Yds)) +
@@ -226,7 +226,7 @@ cor(receiving_stn$Receptions, receiving_stn$TD)
 ggplot(receiving_stn, aes(x = Position, fill = Year)) +
   geom_bar(position="dodge2")
 
-#Multivariate Exploration (Standardized Data)
+#----------------------------Multivariate Exploration (Standardized Data)------------------------------------
 
 #Targets per Position vs. Yards
 ggplot(receiving_stn, aes(x=Targets, y=Yds, color=Position)) +
