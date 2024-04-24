@@ -42,53 +42,64 @@ receiving_stn[6:20] <- as.data.frame(scale(receiving_stn[6:20]))
 #Create visualizations
 #-------------------------Univariate Exploration (RAW Data)------------------------------------
 
-#Number of Players at Each Position
+#Total Number of Players at Each Position (2014-2023)
 ggplot(receiving, aes(x = Position)) +
   geom_bar() +
   labs(x = "Total Number of Players at Each Position (2014-2023)")
 
-#Number of Targets
+#Number of Targets Per Player Per Season
 ggplot(receiving, aes(x = Targets)) +
-  geom_histogram(position="dodge")
+  geom_histogram(position="dodge") + 
+  labs(x = "Number of Targets Per Player Per Season")
 
 ggplot(receiving, aes(x = Targets)) + 
-  geom_boxplot(fill="slateblue", alpha=0.2)
+  geom_boxplot(fill="slateblue", alpha=0.2) + 
+  labs(x = "Number of Targets Per Player Per Season")
 
-#Number of Receptions
+#Number of Receptions Per Player Per Season
 ggplot(receiving, aes(x = Receptions)) +
-  geom_histogram(position="dodge") +
-  xlab("")
+  geom_histogram(position="dodge") + 
+  labs(x = "Number of Receptions Per Player Per Season")
 
 ggplot(receiving, aes(x = Receptions)) + 
-  geom_boxplot(fill="slateblue", alpha=0.2)
+  geom_boxplot(fill="slateblue", alpha=0.2) + 
+  labs(x = "Number of Receptions Per Player Per Season")
 
-#Number of Yards
+#Number of Yards Per Player Per Season
 ggplot(receiving, aes(x = Yds)) +
-  geom_histogram(position="dodge")
+  geom_histogram(position="dodge") + 
+  labs(x = "Number of Yards Per Player Per Season")
 
 ggplot(receiving, aes(x = Yds)) + 
-  geom_boxplot(fill="slateblue", alpha=0.2)
+  geom_boxplot(fill="slateblue", alpha=0.2) + 
+  labs(x = "Number of Yards Per Player Per Season")
 
-#Yards Per Reception
-ggplot(receiving, aes(x = YardsPerReception)) +
-  geom_histogram(position="dodge")
-
-ggplot(receiving, aes(x = YardsPerReception)) + 
-  geom_boxplot(fill="slateblue", alpha=0.2)
-
-#Yards Per Target
+#Average Yards Per Target Per Player
 ggplot(receiving, aes(x = YardsPerTarget)) +
-  geom_histogram(position="dodge")
+  geom_histogram(position="dodge") + 
+  labs(x = "Average Yards Per Target Per Player")
 
 ggplot(receiving, aes(x = YardsPerTarget)) + 
-  geom_boxplot(fill="slateblue", alpha=0.2)
+  geom_boxplot(fill="slateblue", alpha=0.2) + 
+  labs(x = "Average Yards Per Target Per Player")
 
-#Receptions Per Game
+#Average Yards Per Reception Per Player
+ggplot(receiving, aes(x = YardsPerReception)) +
+  geom_histogram(position="dodge") + 
+  labs(x = "Average Yards Per Reception Per Player")
+
+ggplot(receiving, aes(x = YardsPerReception)) + 
+  geom_boxplot(fill="slateblue", alpha=0.2) + 
+  labs(x = "Average Yards Per Reception Per Player")
+
+#Average Number of Receptions Per Player Per Game
 ggplot(receiving, aes(x = ReceptionsPerGame)) +
-  geom_histogram(position="dodge")
+  geom_histogram(position="dodge") + 
+  labs(x = "Average Number of Receptions Per Player Per Game")
 
 ggplot(receiving, aes(x = ReceptionsPerGame)) + 
-  geom_boxplot(fill="slateblue", alpha=0.2)
+  geom_boxplot(fill="slateblue", alpha=0.2) + 
+  labs(x = "Average Number of Receptions Per Player Per Game")
 
 #----------------------------Bivariate Exploration (RAW Data)------------------------------------
 
