@@ -163,7 +163,7 @@ positionPrediction2 <- receivingGrouped_stn
 positionPrediction2$cluster <- as.factor(km.res2$cluster)
 
 #Move cluster column and arrange data by cluster
-positionPrediction2 <- positionPrediction %>%
+positionPrediction2 <- positionPrediction2 %>%
   relocate(cluster, .after = Player) %>%
   arrange(cluster)
 
